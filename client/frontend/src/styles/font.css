@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GmarketSans";
+  src: url("/fonts/GmarketSansMedium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ownglyph";
+  src: url("../fonts/Ownglyph_PDH.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+.custom-placeholder::placeholder {
+  font-family: "Ownglyph", sans-serif !important;
+  color: #8b6b3e;
+  font-size: 1rem;
+  opacity: 1;
+}

@@ -1,0 +1,71 @@
+.my-sushi-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(3px);
+}
+
+.my-sushi-modal.selection-modal {
+    background-color: #fdfcc8;
+    width: 90vw;
+    max-width: 500px;
+    height: 80vh;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 2px solid #b2975c;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.selection-modal-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5vh 3vw;
+}
+
+.selection-modal-footer {
+    padding: 2vh;
+    text-align: center;
+    background-color: rgba(178, 151, 92, 0.1);
+    border-top: 1px solid rgba(178, 151, 92, 0.2);
+}
+
+.selection-modal-close-btn {
+    padding: 1.2vh 4vw;
+    background-color: #3a2c1a;
+    color: #fdfcc8;
+    border: none;
+    border-radius: 2.5vh;
+    font-size: 1.6vh;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.selection-modal-close-btn:hover {
+    background-color: #b2975c;
+}
+
+.selection-sushi-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5vh;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.selection-sushi-item {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

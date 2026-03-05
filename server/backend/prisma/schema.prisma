@@ -1,0 +1,140 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int             @id @default(autoincrement())
+  createdAt     DateTime        @map("created_at") @db.DateTime(6)
+  updatedAt     DateTime        @map("updated_at") @db.DateTime(6)
+  provider      String          @db.VarChar(20)
+  providerId    String          @map("provider_id") @db.VarChar(255)
+  nickname      String?         @db.VarChar(50)
+  deletedAt     DateTime?       @map("deleted_at") @db.DateTime(6)
+  sushi         Sushi[]
+  answer        Answer[]
+  notification  Notification[]
+  sushiExposure SushiExposure[]
+  chatMessages  ChatMessage[]
+
+  @@map("user")
+}
+
+model Category {
+  id    Int     @id @default(autoincrement())
+  name  String  @db.VarChar(10)
+  sushi Sushi[]
+
+  @@map("category")
+}
+
+model SushiType {
+  id    Int     @id @default(autoincrement())
+  name  String  @db.VarChar(20)
+  sushi Sushi[]
+
+  @@map("sushi_type")
+}
+
+model Sushi {
+  id               Int             @id @default(autoincrement())
+  createdAt        DateTime        @map("created_at") @db.DateTime(6)
+  updatedAt        DateTime        @map("updated_at") @db.DateTime(6)
+  userId           Int             @map("user_id")
+  categoryId       Int?            @map("category_id")
+  sushiTypeId      Int?            @map("sushi_type_id")
+  title            String          @db.VarChar(100)
+  content          String          @db.Text
+  expireTime       DateTime        @map("expire_time") @db.DateTime(6)
+  maxAnswers       Int             @map("max_answers")
+  remainingAnswers Int             @map("remaining_answers")
+  isClosed         Boolean         @map("is_closed") @default(false)
+  user             User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category         Category?       @relation(fields: [categoryId], references: [id])
+  sushiType        SushiType?      @relation(fields: [sushiTypeId], references: [id])
+  answer           Answer[]
+  shareToken       ShareToken[]
+  notification     Notification[]
+  sushiExposure    SushiExposure[]
+  chatMessages     ChatMessage[]
+
+  @@map("sushi")
+}
+
+model Answer {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @map("created_at") @db.DateTime(6)
+  updatedAt DateTime @map("updated_at") @db.DateTime(6)
+  userId    Int      @map("user_id")
+  sushiId   Int      @map("sushi_id")
+  content   String   @db.Text
+  isLiked   Boolean  @map("is_liked") @default(false)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // onDelete: Cascade 추가
+  sushi     Sushi    @relation(fields: [sushiId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, sushiId], map: "uq_answer_user_sushi")
+  @@map("answer")
+}
+
+model ShareToken {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @map("created_at") @db.DateTime(6)
+  updatedAt DateTime @map("updated_at") @db.DateTime(6)
+  sushiId   Int      @map("sushi_id")
+  token     String   @db.VarChar(255)
+  // onDelete: Cascade 추가
+  sushi     Sushi    @relation(fields: [sushiId], references: [id], onDelete: Cascade)
+
+  @@map("share_token")
+}
+
+model Notification {
+  id               Int       @id @default(autoincrement())
+  createdAt        DateTime  @map("created_at") @db.DateTime(6)
+  updatedAt        DateTime  @map("updated_at") @db.DateTime(6)
+  userId           Int       @map("user_id")
+  sushiId          Int?      @map("sushi_id")
+  notificationType String?   @map("notification_type") @db.VarChar(255)
+  message          String    @db.VarChar(255)
+  isRead           Boolean   @map("is_read") @default(false)
+  redirectUrl      String    @map("redirect_url") @db.VarChar(255)
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // onDelete: Cascade 추가
+  sushi            Sushi?    @relation(fields: [sushiId], references: [id], onDelete: Cascade)
+
+  @@map("notification")
+}
+
+model SushiExposure {
+  id        BigInt    @id @default(autoincrement())
+  userId    Int       @map("user_id")
+  sushiId   Int       @map("sushi_id")
+  timestamp DateTime? @db.DateTime(6)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // onDelete: Cascade 추가
+  sushi     Sushi     @relation(fields: [sushiId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, sushiId], map: "uq_exposure_user_sushi")
+  @@map("sushi_exposure")
+}
+
+model ChatMessage {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now()) @map("created_at") @db.DateTime(6)
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at") @db.DateTime(6)
+  deletedAt DateTime? @map("deleted_at") @db.DateTime(6)
+  userId    Int?      @map("user_id")
+  type      String    @default("TEXT") @db.VarChar(20)
+  sushiId   Int?      @map("sushi_id")
+  content   String    @db.Text
+  user      User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  sushi     Sushi?    @relation(fields: [sushiId], references: [id], onDelete: Cascade)
+
+  @@map("chat_message")
+}

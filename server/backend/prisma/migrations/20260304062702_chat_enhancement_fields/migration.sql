@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `chat_message` ADD COLUMN `deleted_at` DATETIME(6) NULL,
+    ADD COLUMN `updated_at` DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6);

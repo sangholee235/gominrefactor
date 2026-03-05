@@ -1,0 +1,125 @@
+.notification-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: notificationFadeIn 0.3s ease-out;
+}
+
+.notification-modal {
+  background-color: #fffeec;
+  border: 0.8vh solid #906c48;
+  border-radius: 1.5vh;
+  box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.3);
+  width: calc(45 * var(--custom-vh));
+  max-width: 90%;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  animation: notificationSlideUp 0.3s ease-out;
+}
+
+.notification-header {
+  padding: 2vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.2vh solid rgba(144, 108, 72, 0.2);
+}
+
+.notification-header h3 {
+  margin: 0;
+  font-size: 2.6vh;
+  color: #5d4a37;
+}
+
+.mark-all-read {
+  background: none;
+  border: none;
+  color: #906c48;
+  font-size: 1.8vh;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.notification-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1vh;
+  scrollbar-width: thin;
+  scrollbar-color: #906c48 #fffeec;
+}
+
+.notification-item {
+  padding: 1.5vh 2vh;
+  border-radius: 1vh;
+  margin-bottom: 1vh;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: 0.1vh solid transparent;
+}
+
+.notification-item.unread {
+  background-color: rgba(144, 108, 72, 0.1);
+  border-color: rgba(144, 108, 72, 0.2);
+}
+
+.notification-item:hover {
+  background-color: rgba(144, 108, 72, 0.15);
+}
+
+.notification-content {
+  font-size: 2vh;
+  color: #5d4a37;
+  line-height: 1.4;
+  margin-bottom: 0.5vh;
+}
+
+.notification-time {
+  font-size: 1.6vh;
+  color: #8a7b6a;
+}
+
+.notification-empty {
+  padding: 5vh;
+  text-align: center;
+  color: #8a7b6a;
+  font-size: 2vh;
+}
+
+.notification-close-btn {
+  margin: 2vh;
+  padding: 1.5vh;
+  background-color: #906c48;
+  color: #fffeec;
+  border: none;
+  border-radius: 1vh;
+  font-size: 2.2vh;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes notificationFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes notificationSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(2vh);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,106 @@
+.navbar {
+  position: absolute;
+  top: calc(-7 * var(--custom-vh));
+  left: 0;
+  width: 100%;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center top;
+  padding-bottom: 28.12%;
+  transition: background-image 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.navbar__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+
+.navbar__item {
+  flex: 1;
+  cursor: pointer;
+}
+
+/* UserMenuModal Styles */
+.user-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: userMenuFadeIn 0.3s ease-out;
+}
+
+.user-menu-modal {
+  background-color: #fffeec;
+  border: 0.8vh solid #906c48;
+  border-radius: 1.5vh;
+  box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: calc(40 * var(--custom-vh));
+  max-width: 90%;
+  animation: userMenuSlideUp 0.3s ease-out;
+}
+
+.user-menu-content {
+  display: flex;
+  flex-direction: column;
+  padding: 1vh;
+}
+
+.user-menu-item {
+  background: none;
+  border: none;
+  padding: 2.5vh 2vh;
+  font-size: 2.4vh;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #5d4a37;
+}
+
+.user-menu-item:hover {
+  background-color: rgba(144, 108, 72, 0.1);
+  color: #906c48;
+}
+
+.user-menu-item.delete {
+  color: #ff4d4f;
+}
+
+.user-menu-item.delete:hover {
+  background-color: rgba(255, 77, 79, 0.05);
+}
+
+.user-menu-divider {
+  height: 0.2vh;
+  background-color: #906c48;
+  opacity: 0.2;
+  margin: 0 2vh;
+}
+
+@keyframes userMenuFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes userMenuSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(2vh);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

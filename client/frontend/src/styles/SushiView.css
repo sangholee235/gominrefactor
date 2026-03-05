@@ -1,0 +1,184 @@
+.sushi-view-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.sushi-view-modal {
+  position: relative;
+  top: calc(6 * var(--custom-vh));
+  height: calc(80 * var(--custom-vh));
+  width: calc(46 * var(--custom-vh));
+}
+
+.sushi-view-container {
+  width: 100%;
+  height: calc(70 * var(--custom-vh));
+  background: #fffeec;
+  border: 1vh #906c48 solid;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vh;
+  box-sizing: border-box;
+  border-radius: 1vh;
+  overflow: hidden;
+}
+
+.sushi-view-button-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+  min-height: calc(3.6 * var(--custom-vh));
+  padding: calc(0.3 * var(--custom-vh));
+  margin-bottom: calc(0.6 * var(--custom-vh));
+}
+
+.sushi-view-icon-button {
+  width: calc(3 * var(--custom-vh));
+  cursor: pointer;
+  font-size: calc(2.5 * var(--custom-vh));
+  border: none;
+  background: transparent;
+  color: #5d4a37;
+}
+
+.sushi-view-title {
+  display: inline-block;
+  margin: 0 calc(2 * var(--custom-vh)) calc(1 * var(--custom-vh));
+  padding: 0 calc(2 * var(--custom-vh));
+  font-weight: bold;
+  color: #5d4a37;
+  font-size: calc(3 * var(--custom-vh));
+  height: auto;
+  min-height: calc(3 * var(--custom-vh));
+  line-height: calc(4 * var(--custom-vh));
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.sushi-view-title--header {
+  margin: 0;
+  padding: 0 calc(1.2 * var(--custom-vh));
+  text-align: center;
+  font-size: calc(2.6 * var(--custom-vh));
+  line-height: calc(3.2 * var(--custom-vh));
+}
+
+.sushi-view-title-spacer {
+  width: 100%;
+  height: calc(3.2 * var(--custom-vh));
+}
+
+.sushi-view-content-container {
+  position: relative;
+  width: 90%;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sushi-view-content-wrapper {
+  position: relative;
+  height: 97%;
+  overflow: hidden;
+}
+
+.sushi-view-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sushi-view-content::-webkit-scrollbar {
+  display: none;
+}
+
+.sushi-view-text {
+  margin: 3vh 0;
+  font-size: calc(2.2 * var(--custom-vh));
+  line-height: 1.3;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.sushi-view-fade-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(5 * var(--custom-vh));
+  background: linear-gradient(to top,
+      rgba(255, 254, 236, 0),
+      rgba(255, 254, 236, 1));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sushi-view-fade-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(5 * var(--custom-vh));
+  background: linear-gradient(to bottom,
+      rgba(255, 254, 236, 0),
+      rgba(255, 254, 236, 1));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sushi-view-textarea {
+  width: calc(35 * var(--custom-vh));
+  height: auto;
+  flex: 1;
+  min-height: 0;
+  padding: calc(1.2 * var(--custom-vh));
+  margin-top: calc(1.5 * var(--custom-vh));
+  border-radius: calc(1 * var(--custom-vh));
+  border: 0.5vh solid #b2975c;
+  font-family: inherit;
+  font-size: calc(2 * var(--custom-vh));
+  line-height: 1.5;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.sushi-view-textarea:focus {
+  outline: none;
+}
+
+.sushi-view-counter {
+  font-size: calc(1.5 * var(--custom-vh));
+  text-align: right;
+  padding: 0.5vh;
+  align-self: flex-end;
+  color: #5d4a37;
+}
+
+.sushi-view-action {
+  border: none;
+  border-radius: 1vh;
+  background-color: #b2975c;
+  color: #5d4a37;
+  font-size: calc(2 * var(--custom-vh));
+  padding: calc(1 * var(--custom-vh)) calc(2 * var(--custom-vh));
+  height: calc(4 * var(--custom-vh));
+  margin: 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: inherit;
+}

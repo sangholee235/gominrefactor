@@ -1,0 +1,148 @@
+.my-answer-list-background {
+  position: relative;
+  height: calc(100 * var(--custom-vh));
+  width: calc(55 * var(--custom-vh));
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+/* 검색창 */
+.my-answer-list-search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: calc(1 * var(--custom-vh));
+  height: calc(5.8 * var(--custom-vh));
+}
+
+.my-answer-list-input-wrapper {
+  position: relative;
+  width: calc(45 * var(--custom-vh));
+}
+
+.my-answer-list-search-input {
+  width: calc(45 * var(--custom-vh));
+  height: calc(5.8 * var(--custom-vh));
+  font-size: calc(1.8 * var(--custom-vh));
+  text-align: center;
+  border: calc(0.3 * var(--custom-vh)) solid #906C48;
+  border-radius: calc(1 * var(--custom-vh));
+  outline: none;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.my-answer-list-search-icon {
+  position: absolute;
+  right: calc(1 * var(--custom-vh));
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: calc(2.5 * var(--custom-vh));
+  color: #906C48;
+  cursor: pointer;
+  font-style: normal;
+}
+
+/* 리스트 감싸는 스타일 */
+.my-answer-list-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: calc(55 * var(--custom-vh));
+  margin: 0 auto;
+  padding: calc(12 * var(--custom-vh)) calc(3 * var(--custom-vh)) calc(15 * var(--custom-vh));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 나의 답변 외부 박스 */
+.my-answer-outer-box {
+  width: calc(35 * var(--custom-vh));
+  margin: 0 auto calc(1.5 * var(--custom-vh));
+  border: calc(0.7 * var(--custom-vh)) solid #8B6B3E;
+  border-radius: calc(1.2 * var(--custom-vh));
+  background-color: #B2975C;
+  padding: calc(1 * var(--custom-vh));
+  box-sizing: border-box;
+}
+
+/* 나의 답변 내부 박스 */
+.my-answer-inner-box {
+  width: 100%;
+  border: calc(0.3 * var(--custom-vh)) solid #906C48;
+  border-radius: calc(0.6 * var(--custom-vh));
+  background-color: #B2975C;
+  text-align: center;
+  color: #5D4A37;
+  font-size: calc(3.8 * var(--custom-vh));
+  font-weight: bold;
+  padding: calc(0.7 * var(--custom-vh)) 0;
+  box-sizing: border-box;
+}
+
+/* 검색 결과 없을 때 */
+.my-answer-no-result {
+  text-align: center;
+  color: #8B6B3E;
+  font-size: calc(2.8 * var(--custom-vh));
+  margin-top: calc(3.5 * var(--custom-vh));
+}
+
+/* 글 리스트 스타일 */
+.my-answer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.my-answer-list-item {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.my-answer-loading-text {
+  text-align: center;
+  color: #8B6B3E;
+  font-size: calc(2 * var(--custom-vh));
+  padding: calc(2 * var(--custom-vh)) 0;
+}
+
+.my-answer-scroll-top-btn {
+  position: fixed;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(6 * var(--custom-vh));
+  height: calc(6 * var(--custom-vh));
+  background-color: rgba(178, 151, 92, 0.6);
+  border: calc(0.3 * var(--custom-vh)) solid rgba(139, 107, 62, 0.4);
+  border-radius: calc(3 * var(--custom-vh));
+  color: #FFFEFA;
+  font-size: calc(2.5 * var(--custom-vh));
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  box-shadow: 0 calc(0.4 * var(--custom-vh)) calc(0.8 * var(--custom-vh)) rgba(0, 0, 0, 0.15);
+}
+
+.my-answer-scroll-icon {
+  width: calc(3 * var(--custom-vh));
+  height: calc(3 * var(--custom-vh));
+  filter: brightness(0) invert(1);
+}

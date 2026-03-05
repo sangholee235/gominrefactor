@@ -1,0 +1,97 @@
+name: Deploy Server to EC2
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - 'backend/**'
+      - '.github/workflows/deploy-server.yml'
+
+env:
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  ECR_REPOSITORY: ${{ secrets.ECR_SERVER_REPOSITORY }}
+  CONTAINER_NAME: gomin-server
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          cd backend
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          envs: AWS_REGION,CONTAINER_NAME
+          script: |
+            # 0. AWS CLI 설치 확인 및 설치 (없으면 설치)
+            if ! command -v aws &> /dev/null; then
+                echo "AWS CLI not found. Installing..."
+                curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+                unzip -q awscliv2.zip
+                sudo ./aws/install
+                rm -rf aws awscliv2.zip
+            fi
+
+            # 1. AWS CLI로 SSM에서 RDS 엔드포인트 가져오기
+            RDS_HOST=$(aws ssm get-parameter --name "/portfolio-docker/rds_endpoint" --query "Parameter.Value" --output text --region ${{ env.AWS_REGION }})
+            
+            # 2. DATABASE_URL 조합 (비밀번호는 Secret 사용)
+            DATABASE_URL="mysql://${{ secrets.DB_USERNAME }}:${{ secrets.DB_PASSWORD }}@$RDS_HOST:3306/${{ secrets.DB_NAME }}"
+            
+            # 3. Docker 로그인 (EC2 내부에서)
+            # 파이프 에러 방지를 위해 변수에 담아서 처리
+            PASSWORD=$(aws ecr get-login-password --region ${{ env.AWS_REGION }})
+            echo "$PASSWORD" | docker login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}
+
+            # 4. 기존 컨테이너 중지 및 삭제
+            docker stop $CONTAINER_NAME || true
+            docker rm $CONTAINER_NAME || true
+
+            # 5. 새 컨테이너 실행
+            docker run -d \
+              --name $CONTAINER_NAME \
+              -p 3000:3000 \
+              --network app-net \
+              -e DATABASE_URL="$DATABASE_URL" \
+              -e NODE_ENV="${{ secrets.NODE_ENV }}" \
+              -e PORT="${{ secrets.PORT }}" \
+              -e JWT_SECRET="${{ secrets.JWT_SECRET }}" \
+              -e JWT_EXPIRES_IN="${{ secrets.JWT_EXPIRES_IN }}" \
+              -e JWT_REFRESH_SECRET="${{ secrets.JWT_REFRESH_SECRET }}" \
+              -e JWT_REFRESH_EXPIRES_IN="${{ secrets.JWT_REFRESH_EXPIRES_IN }}" \
+              -e KAKAO_CLIENT_ID="${{ secrets.KAKAO_CLIENT_ID }}" \
+              -e KAKAO_CLIENT_SECRET="${{ secrets.KAKAO_CLIENT_SECRET }}" \
+              -e KAKAO_REDIRECT_URI="http://${{ secrets.EC2_HOST }}/api/auth/kakao/callback" \
+              -e CLIENT_URL="${{ secrets.CLIENT_URL }}" \
+              ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+
+            # 6. 미사용 이미지 정리 (공간 확보)
+            docker image prune -f

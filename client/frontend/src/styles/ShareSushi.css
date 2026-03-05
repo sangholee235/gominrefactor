@@ -1,0 +1,96 @@
+.share-sushi-page {
+  padding: 20px 0;
+  padding-top: calc(17 * var(--custom-vh));
+  /* 네비바 높이만큼 여백 추가 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.share-sushi-paper-container {
+  height: auto;
+  min-height: 80vh;
+  width: calc(50 * var(--custom-vh));
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* SushiView.css의 스타일 상속을 위해 클래스명 함께 사용 권장 */
+}
+
+.share-sushi-header-spacer {
+  width: calc(3 * var(--custom-vh));
+}
+
+.share-sushi-content-wrapper {
+  width: 90%;
+  margin: 2vh 0;
+  flex: 1 1 auto;
+}
+
+.share-sushi-actions {
+  margin: 2vh 0 5vh 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.share-sushi-closed-badge {
+  padding: 1.5vh 3vh;
+  background-color: #e0e0e0;
+  color: #757575;
+  border-radius: 1vh;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.share-sushi-answer-btn {
+  width: auto;
+  height: auto;
+  padding: 1.5vh 3vh;
+}
+
+.share-sushi-loading,
+.share-sushi-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: #5d4a37;
+}
+
+.share-sushi-error {
+  color: #ff6b6b;
+}
+
+/* Category shadow colors */
+.title-shadow-1 {
+  box-shadow: 0 calc(0.5 * var(--custom-vh)) 0px rgba(255, 0, 0, 0.4);
+}
+
+.title-shadow-2 {
+  box-shadow: 0 calc(0.5 * var(--custom-vh)) 0px rgba(255, 255, 0, 0.4);
+}
+
+.title-shadow-3 {
+  box-shadow: 0 calc(0.5 * var(--custom-vh)) 0px rgba(83, 178, 0, 0.4);
+}
+
+.title-shadow-4 {
+  box-shadow: 0 calc(0.5 * var(--custom-vh)) 0px rgba(0, 179, 255, 0.4);
+}
+
+.title-shadow-5 {
+  box-shadow: 0 calc(0.5 * var(--custom-vh)) 0px rgba(183, 6, 227, 0.4);
+}
+
+.title-shadow-6 {
+  box-shadow: 0 calc(0.5 * var(--custom-vh)) 0px rgba(157, 157, 157, 0.4);
+}
+
+.title-shadow-default {
+  box-shadow: 0 calc(0.5 * var(--custom-vh)) 0px rgba(255, 255, 255, 0.4);
+}

@@ -1,0 +1,119 @@
+.sushi-detail-page {
+  /* 네비게이션 높이를 고려해 상단 패딩 적용 */
+  padding: var(--nav-height, 64px) 1rem 1rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  /* MySushiList와 동일한 노랑 계열 배경(#fdfcc8) */
+  background-color: #fdfcc8;
+  /* 센터 고정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sushi-detail-back-btn {
+  margin-bottom: 1.5rem;
+  background-color: #906c48; /* 버튼 배경색 */
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #fff; /* 버튼 텍스트 색상 */
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.sushi-detail-back-btn:hover {
+  background-color: #7a5c3c; /* 호버 시 배경색 */
+}
+
+/* 초밥 상세 정보 카드 */
+.sushi-detail-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 그림자 효과 */
+}
+
+.sushi-detail-title {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.3;
+}
+
+.sushi-detail-date {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.sushi-detail-content {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+  white-space: pre-wrap; /* 줄바꿈 보존 */
+  line-height: 1.8;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+/* 답변 목록 영역 */
+.sushi-answers-container {
+  margin-top: 2.5rem;
+}
+
+.sushi-answers-header {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.sushi-answers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sushi-answer-item {
+  border: 1px solid #f0f0f0;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03); /* 답변 항목 그림자 */
+}
+
+.sushi-answer-text {
+  margin: 0 0 0.75rem 0;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  color: #444;
+  font-size: 1rem;
+}
+
+.sushi-answer-date {
+  font-size: 0.8rem;
+  color: #999;
+  text-align: right;
+  display: block;
+}
+
+/* 로딩 및 에러 상태 */
+.sushi-detail-loading,
+.sushi-detail-error {
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #906c48; /* 로딩/에러 메시지 색상 */
+  font-weight: bold;
+}
+
+.sushi-detail-error {
+  color: #d9534f; /* 에러 메시지 색상 */
+}

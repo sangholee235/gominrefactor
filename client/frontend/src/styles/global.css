@@ -1,0 +1,15 @@
+@import "./font.css";
+
+html {
+  padding: 0;
+  margin: 0;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: "Ownglyph", Ownglyph;
+  --custom-vh: 1vh;
+}
