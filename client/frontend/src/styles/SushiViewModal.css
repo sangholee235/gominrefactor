@@ -1,0 +1,146 @@
+.sushi-view-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 1;
+}
+
+.sushi-view-modal {
+    position: relative;
+    height: calc(80 * var(--custom-vh));
+    width: calc(46 * var(--custom-vh));
+    transform: translateY(0);
+}
+
+.sushi-view-modal-container {
+    width: 100%;
+    height: 100%;
+    background: #fffeec;
+    border: 1vh #906c48 solid;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vh;
+    box-sizing: border-box;
+    border-radius: 1vh;
+    overflow: hidden;
+}
+
+.sushi-view-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: calc(3.6 * var(--custom-vh));
+    margin-bottom: calc(1.5 * var(--custom-vh));
+    flex-shrink: 0;
+}
+
+.sushi-view-modal-header-spacer {
+    width: calc(2.5 * var(--custom-vh));
+}
+
+.sushi-view-modal-title {
+    font-weight: bold;
+    color: #5d4a37;
+    font-size: calc(2.6 * var(--custom-vh));
+    text-align: center;
+    flex: 1;
+}
+
+.sushi-view-modal-close {
+    background: none;
+    border: none;
+    font-size: calc(2.5 * var(--custom-vh));
+    color: #5d4a37;
+    cursor: pointer;
+    padding: 0;
+}
+
+.sushi-view-content-wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sushi-view-text-section {
+    background-color: rgba(178, 151, 92, 0.1);
+    padding: calc(1.5 * var(--custom-vh));
+    border-radius: calc(1 * var(--custom-vh));
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.sushi-view-modal-title-content {
+    font-weight: bold;
+    color: #5d4a37;
+    font-size: calc(2.2 * var(--custom-vh));
+    margin: 0 0 calc(1 * var(--custom-vh)) 0;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.sushi-view-text-content {
+    flex: 1;
+    margin: 0;
+    font-size: calc(1.8 * var(--custom-vh));
+    line-height: 1.6;
+    color: #333;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #b2975c #fffeec;
+    padding-right: calc(0.5 * var(--custom-vh));
+}
+
+.sushi-view-text-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: calc(1 * var(--custom-vh));
+    flex-shrink: 0;
+}
+
+.sushi-view-date {
+    font-size: calc(1.4 * var(--custom-vh));
+    color: #666;
+    font-style: italic;
+}
+
+.loading-text,
+.error-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #666;
+    font-size: calc(1.8 * var(--custom-vh));
+}
+
+.error-text {
+    color: #d32f2f;
+}
+
+@media (max-width: 600px) {
+    .sushi-view-modal {
+        margin: 10px;
+        max-height: 90vh;
+    }
+    
+    .sushi-view-modal-container {
+        padding: 16px;
+    }
+}

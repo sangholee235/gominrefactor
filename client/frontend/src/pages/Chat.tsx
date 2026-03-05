@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useChatSocket } from '../hooks/useChatSocket';
 import { useAuth } from '../context/AuthContext';
 import SushiSelectionModal from '../component/modal/SushiSelectionModal';
+import SushiViewModal from '../component/modal/SushiViewModal';
 import '../styles/Chat.css';
 import '../styles/SushiDetail.css'; // 스시 카드 스타일 재사용을 위해 추가
 
@@ -21,6 +22,7 @@ const Chat = () => {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const [isSushiModalOpen, setIsSushiModalOpen] = useState(false);
+    const [viewingSushiId, setViewingSushiId] = useState<number | null>(null);
 
     // 새 메시지 도착 또는 처음 로딩 시 100ms 지연하여 자동 스크롤 확실하게 적용
     const scrollToBottom = () => {
@@ -202,7 +204,7 @@ const Chat = () => {
                                         ) : msg.type === 'SUSHI_SHARE' && msg.sushi ? (
                                             <div
                                                 className="chat-sushi-card"
-                                                onClick={() => navigate(`/sushi/${msg.sushiId}`)}
+                                                onClick={() => setViewingSushiId(msg.sushiId || null)}
                                             >
                                                 <div className="chat-sushi-card-header">
                                                     <span>🍣</span> {msg.sushi.title}
@@ -286,6 +288,12 @@ const Chat = () => {
                 isOpen={isSushiModalOpen}
                 onClose={() => setIsSushiModalOpen(false)}
                 onSelect={handleSushiSelect}
+            />
+
+            <SushiViewModal
+                isOpen={viewingSushiId !== null}
+                onClose={() => setViewingSushiId(null)}
+                sushiId={viewingSushiId}
             />
         </div>
     );
