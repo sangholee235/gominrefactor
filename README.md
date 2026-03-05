@@ -19,6 +19,39 @@
 
 ---
 
+## 🎬 데모 GIF
+
+<p align="center">
+  <img src="고민한접시GIF/메인화면.gif" alt="메인 화면" width="85%">
+</p>
+
+<div align="center">
+  <img src="고민한접시GIF/고민글등록하기.gif" alt="고민 글 등록하기" width="48%">
+  <img src="고민한접시GIF/답변등록하기.gif" alt="답변 등록하기" width="48%">
+</div>
+
+<div align="center">
+  <img src="고민한접시GIF/답변수정하기.gif" alt="답변 수정하기" width="48%">
+  <img src="고민한접시GIF/답변삭제하기.gif" alt="답변 삭제하기" width="48%">
+</div>
+
+<div align="center">
+  <img src="고민한접시GIF/고민답변리스트조회.gif" alt="고민/답변 리스트 조회" width="48%">
+  <img src="고민한접시GIF/고민글수정하기.gif" alt="고민 글 수정하기" width="48%">
+</div>
+
+<div align="center">
+  <img src="고민한접시GIF/고민삭제하기.gif" alt="고민 삭제하기" width="48%">
+  <img src="고민한접시GIF/채팅기능.gif" alt="실시간 채팅 기능" width="48%">
+</div>
+
+<div align="center">
+  <img src="고민한접시GIF/채팅방고민공유.gif" alt="채팅방 고민 공유" width="48%">
+  <img src="고민한접시GIF/알림기능.gif" alt="알림 기능" width="48%">
+</div>
+
+---
+
 ## 🛠️ 기술 스택
 
 ### Frontend
