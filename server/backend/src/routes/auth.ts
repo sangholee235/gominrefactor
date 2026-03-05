@@ -159,7 +159,14 @@ router.post("/auth/refresh", async (req: Request, res: Response) => {
  *         description: 로그아웃 성공
  */
 router.post("/auth/logout", authenticate, (req: Request, res: Response) => {
-  return res.json({ message: "로그아웃 되었습니다." });
+  // 실제 로그아웃 처리: 클라이언트에서 토큰을 삭제하면 됨
+  // 백엔드에서는 특별한 작업이 필요없지만 성공 응답을 보냄
+  return res.json({ 
+    success: true,
+    data: null,
+    error: null,
+    message: "로그아웃 되었습니다." 
+  });
 });
 
 /**
