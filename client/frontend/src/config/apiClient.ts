@@ -20,6 +20,15 @@ apiClient.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    
+    // 개발 모드에서 devUserId 헤더 추가
+    if (DISABLE_AUTH) {
+      const devUserId = localStorage.getItem("devUserId");
+      if (devUserId) {
+        config.headers['X-Dev-User-ID'] = devUserId;
+      }
+    }
+    
     return config;
   },
   (error) => Promise.reject(error),

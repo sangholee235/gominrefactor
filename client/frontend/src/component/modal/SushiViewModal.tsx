@@ -19,13 +19,25 @@ const SushiViewModal: React.FC<SushiViewModalProps> = ({ isOpen, onClose, sushiI
                 <div className="sushi-view-modal-container">
                     <div className="sushi-view-modal-header">
                         <div className="sushi-view-modal-header-spacer"></div>
-                        <h3 className="sushi-view-modal-title">{sushi ? sushi.title : '고민 상세보기'}</h3>
+                        <h3 className="sushi-view-modal-title">
+                            {isLoading ? <span className="skeleton-title" aria-label="loading title" /> : (sushi ? sushi.title : '고민 상세보기')}
+                        </h3>
                         <button className="sushi-view-modal-close" onClick={onClose}>X</button>
                     </div>
 
                     <div className="sushi-view-content-wrapper">
                         {isLoading && (
-                            <div className="loading-text">로딩 중...</div>
+                            <div className="sushi-view-text-section">
+                                <div className="skeleton-content">
+                                    <div className="skeleton-line w-90" />
+                                    <div className="skeleton-line w-95" />
+                                    <div className="skeleton-line w-80" />
+                                    <div className="skeleton-line w-60" />
+                                </div>
+                                <div className="sushi-view-text-footer">
+                                    <span className="skeleton-date w-30" />
+                                </div>
+                            </div>
                         )}
 
                         {error && (

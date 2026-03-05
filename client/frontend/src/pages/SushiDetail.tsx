@@ -21,7 +21,7 @@ const SushiDetail = () => {
   };
 
   const getPostItContent = (content: string) => {
-    if (content.length > 50) return "답변 확인하기";
+    if (content.length > 500) return "답변 확인하기";
     return content;
   };
 

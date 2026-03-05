@@ -360,6 +360,95 @@
   color: #B2975C;
 }
 
+/* Edit Layer Styles - MyAnswerDetailModal과 동일한 디자인 */
+.edit-layer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  border-radius: inherit;
+}
+
+.edit-layer-content {
+  background: #FFFFF0;
+  width: 90%;
+  max-width: calc(40 * var(--custom-vh));
+  padding: calc(2.5 * var(--custom-vh));
+  border-radius: 15px;
+  border: 2px solid #B2975C;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.edit-input-container,
+.edit-textarea-container {
+  margin-bottom: calc(1.5 * var(--custom-vh));
+}
+
+.edit-input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #B2975C;
+  border-radius: 8px;
+  font-size: calc(1.8 * var(--custom-vh));
+  box-sizing: border-box;
+  outline: none;
+}
+
+.edit-textarea-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #B2975C;
+  border-radius: 8px;
+  font-size: calc(1.8 * var(--custom-vh));
+  box-sizing: border-box;
+  outline: none;
+  height: calc(15 * var(--custom-vh));
+  resize: none;
+}
+
+.character-count {
+  text-align: right;
+  font-size: calc(1.4 * var(--custom-vh));
+  color: #8D7B7B;
+  margin-top: 5px;
+}
+
+.edit-layer-btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.layer-cancel-btn,
+.layer-save-btn {
+  padding: 8px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: calc(1.6 * var(--custom-vh));
+}
+
+.layer-cancel-btn {
+  background-color: #8D7B7B;
+  color: white;
+}
+
+.layer-save-btn {
+  background-color: #B2975C;
+  color: white;
+}
+
+.layer-save-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
 /* Category shadow colors */
 .title-shadow-1 {
   box-shadow: 0 calc(0.5 * var(--custom-vh)) 0px rgba(255, 0, 0, 0.4);

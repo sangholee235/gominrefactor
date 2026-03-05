@@ -134,6 +134,54 @@
     color: #d32f2f;
 }
 
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.skeleton-title {
+    display: inline-block;
+    height: calc(2.2 * var(--custom-vh));
+    width: 60%;
+    border-radius: calc(0.6 * var(--custom-vh));
+    background: linear-gradient(90deg, rgba(178,151,92,0.15) 25%, rgba(178,151,92,0.3) 50%, rgba(178,151,92,0.15) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+}
+
+.skeleton-content {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1 * var(--custom-vh));
+    padding: calc(1.5 * var(--custom-vh));
+    background-color: rgba(178, 151, 92, 0.1);
+    border-radius: calc(1 * var(--custom-vh));
+    min-height: calc(20 * var(--custom-vh));
+}
+
+.skeleton-line {
+    height: calc(2 * var(--custom-vh));
+    border-radius: calc(0.6 * var(--custom-vh));
+    background: linear-gradient(90deg, rgba(178,151,92,0.15) 25%, rgba(178,151,92,0.3) 50%, rgba(178,151,92,0.15) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+}
+
+.skeleton-date {
+    display: inline-block;
+    height: calc(1.6 * var(--custom-vh));
+    border-radius: calc(0.6 * var(--custom-vh));
+    background: linear-gradient(90deg, rgba(178,151,92,0.15) 25%, rgba(178,151,92,0.3) 50%, rgba(178,151,92,0.15) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+}
+
+.w-95 { width: 95%; }
+.w-90 { width: 90%; }
+.w-80 { width: 80%; }
+.w-60 { width: 60%; }
+.w-30 { width: 30%; }
+
 @media (max-width: 600px) {
     .sushi-view-modal {
         margin: 10px;

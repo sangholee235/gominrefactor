@@ -49,7 +49,14 @@ function Layout() {
         {location.pathname !== "/login" && <Navbar />}
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />
-          <Route path="/home" element={<Home />} />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/auth/finalize" element={<AuthCallback />} />
           <Route path="/share/:token" element={<ShareSushi />} />

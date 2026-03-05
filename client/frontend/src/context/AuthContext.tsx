@@ -39,7 +39,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const logout = () => {
+    // 모든 로컬스토리지 데이터 정리
     localStorage.removeItem("userToken");
+    localStorage.removeItem("devUserId");
+    sessionStorage.removeItem("redirectUrl");
+    
+    // 상태 초기화
     setUser(null);
     setIsLoggedIn(false);
   };
