@@ -17,8 +17,12 @@ export const apiClient: AxiosInstance = axios.create({
 apiClient.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("userToken");
+    const devUserId = localStorage.getItem("devUserId");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+    }
+    if (devUserId) {
+      (config.headers as any)["X-Dev-User-Id"] = devUserId;
     }
     return config;
   },
