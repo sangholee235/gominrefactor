@@ -1,4 +1,4 @@
-# 🍣 고민초밥 (Gomin Sushi) - GominRefactor
+# 🍣 고민한접시 - GominRefactor
 
 > **모두의 고민을 따뜻한 초밥 한 접시에 담아 나누는 소셜 플랫폼**
 > 
