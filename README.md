@@ -22,7 +22,7 @@
 ## 🎬 데모 GIF
 
 <p align="center">
-  <img src="고민한접시GIF/메인화면.gif" alt="메인 화면" width="85%">
+  <img src="고민한접시GIF/메인화면.gif" alt="메인 화면" width="48%">
 </p>
 
 <div align="center">
