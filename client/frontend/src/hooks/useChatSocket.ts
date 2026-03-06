@@ -49,7 +49,9 @@ export const useChatSocket = () => {
         });
 
         socket.on('new_message', (msg: ChatMessage) => {
-            setMessages((prev) => [...prev, msg]);
+            setMessages((prev) => [...prev, msg].sort((a, b) => 
+                new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+            ));
         });
 
         socket.on('message_edited', (data: { id: number; content: string; updatedAt: string }) => {

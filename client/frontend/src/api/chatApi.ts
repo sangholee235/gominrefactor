@@ -39,5 +39,7 @@ export const getChatHistory = async (limit = 50): Promise<ChatMessage[]> => {
         type: msg.type,
         sushiId: msg.sushiId,
         sushi: msg.sushi,
-    })).reverse();
+    })).sort((a, b) => 
+        new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    );
 };
