@@ -132,7 +132,7 @@ npm run dev
 ## 🏗️ 시스템 아키텍처
 
 <p align="center">
-  <img src="assets/architecture.png" alt="시스템 아키텍처 다이어그램" width="80%">
+  <img src="assets/Architecture.png" alt="시스템 아키텍처 다이어그램" width="80%">
   <br>
   <em>고민한접시 시스템 아키텍처</em>
 </p>
