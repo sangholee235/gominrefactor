@@ -129,6 +129,43 @@ npm run dev
 
 ---
 
+## 🏗️ 시스템 아키텍처
+
+<p align="center">
+  <img src="assets/architecture.png" alt="시스템 아키텍처 다이어그램" width="80%">
+  <br>
+  <em>고민한접시 시스템 아키텍처</em>
+</p>
+
+### 아키텍처 구성 요소
+
+#### 📱 프론트엔드 (Client)
+- **React 19 + TypeScript**: 모던한 UI 컴포넌트 기반 개발
+- **Vite**: 빠른 개발 서버 및 빌드 도구
+- **React Router**: SPA 라우팅 관리
+- **TanStack Query**: 서버 상태 관리 및 캐싱
+- **Socket.io-client**: 실시간 통신
+
+#### 🚀 백엔드 (Server) 
+- **Express.js**: RESTful API 서버
+- **Socket.io**: 실시간 웹소켓 통신
+- **Prisma**: 타입 안전한 데이터베이스 ORM
+- **MySQL**: 관계형 데이터베이스
+- **JWT**: 토큰 기반 인증
+
+#### 🔄 데이터 흐름
+1. **클라이언트 요청**: React → Express API
+2. **실시간 통신**: Socket.io 웹소켓 연결
+3. **데이터 처리**: Prisma → MySQL
+4. **인증**: JWT 토큰 검증
+5. **응답**: JSON 데이터 반환
+
+### 🛡️ 보안 아키텍처
+- **CORS**: 도메인 간 요청 제어
+- **Helmet**: 보안 헤더 자동 설정
+- **Rate Limiting**: API 요청 제한
+- **Environment Variables**: 민감정보 보호
+
 ## 📖 API 문서
 
 서버 실행 후 아래 주소에서 Swagger UI를 통해 상세한 API 명세를 확인할 수 있습니다.
