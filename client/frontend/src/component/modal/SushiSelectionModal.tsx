@@ -28,7 +28,7 @@ const SushiSelectionModal: React.FC<SushiSelectionModalProps> = ({ isOpen, onClo
                 <div className="my-sushi-modal-header">
                     <div className="my-sushi-modal-header-spacer"></div>
                     <h3 className="my-sushi-modal-title">공유할 고민 선택</h3>
-                    <button className="my-sushi-modal-close" onClick={onClose}>X</button>
+                    {/* <button className="my-sushi-modal-close" onClick={onClose}>X</button> */}
                 </div>
 
                 <div className="my-sushi-list-search-container">
