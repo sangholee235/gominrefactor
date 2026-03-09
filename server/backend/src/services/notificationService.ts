@@ -33,3 +33,23 @@ export const markNotificationAsRead = async (notificationId: number, userId: num
     data: { isRead: true },
   });
 };
+
+export const createNotification = async (
+  userId: number,
+  sushiId: number,
+  notificationType: string,
+  message: string,
+  redirectUrl: string
+) => {
+  return prisma.notification.create({
+    data: {
+      userId,
+      sushiId,
+      notificationType,
+      message,
+      redirectUrl,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  });
+};

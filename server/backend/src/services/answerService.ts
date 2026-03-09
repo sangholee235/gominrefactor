@@ -60,5 +60,20 @@ export const saveAnswer = async (
     data: { remainingAnswers: sushi.remainingAnswers - 1 },
   });
 
+  // 답변 생성 후 알림 생성
+  try {
+    const { createNotification } = await import('./notificationService');
+    await createNotification(
+      sushi.userId, // 초밥 작성자에게 알림
+      sushiId,
+      'ANSWER_CREATED',
+      `당신의 초밥 "${sushi.title}"에 새로운 답변이 달렸습니다.`,
+      `/sushi/${sushiId}`
+    );
+  } catch (error) {
+    console.error('알림 생성 실패:', error);
+    // 알림 실패해도 답변 생성은 성공하도록 처리
+  }
+
   return answer;
 };
