@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [devUserId, setDevUserId] = useState("");
   const navigate = useNavigate();
-  
+
   const styles: Record<string, React.CSSProperties> = {
     backgroundContainer: {
       position: "relative",
